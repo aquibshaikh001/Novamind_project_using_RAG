@@ -1,0 +1,16 @@
+# Core web framework
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9   # needed by FastAPI to receive file uploads
+# HTTP client used to talk to Ollama
+httpx>=0.27
+# Vector database
+chromadb>=0.5
+# PDF reading
+pypdf>=4.0
+# Reads the .env file
+python-dotenv>=1.0
+# Web search (DuckDuckGo)
+ddgs>=9.0
+# Text-to-speech
+edge-tts>=6.1

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+  index.html - the STRUCTURE of the page (what elements exist).
+  style.css  - how it LOOKS.
+  app.js     - how it BEHAVES (talks to the backend).
+  Plain HTML/CSS/JS on purpose: no build step, nothing to install, nothing to break.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NovaMind</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="layout">
+
+    <!-- ============ LEFT: documents and settings ============ -->
+    <aside class="sidebar">
+      <h1 class="brand">NovaMind</h1>
+      <p class="tagline">Ask your documents. Ask the web. Speak or type.</p>
+
+      <div id="status" class="status" role="status">Checking connection…</div>
+
+      <h2>Your documents</h2>
+      <label class="upload" for="file-input">Add PDF or text file</label>
+      <input id="file-input" type="file" accept=".pdf,.txt,.md" hidden />
+      <div id="upload-msg" class="small"></div>
+      <ul id="doc-list" class="doc-list"></ul>
+
+      <h2>Chat model</h2>
+      <select id="model-select" aria-label="Chat model"></select>
+      <p id="hardware-tip" class="small"></p>
+    </aside>
+
+    <!-- ============ RIGHT: the conversation ============ -->
+    <main class="chat">
+      <header class="chat-head">
+        <div class="modes" role="radiogroup" aria-label="Search mode">
+          <button class="mode active" data-mode="auto"  title="Decides for you: documents first, web if needed">Auto</button>
+          <button class="mode"        data-mode="docs"  title="Answers only from your documents">Documents</button>
+          <button class="mode"        data-mode="web"   title="Searches the internet">Web</button>
+        </div>
+        <label class="speak-toggle">
+          <input id="speak-toggle" type="checkbox" /> Read answers aloud
+        </label>
+      </header>
+
+      <div id="messages" class="messages" aria-live="polite">
+        <div class="empty" id="empty">
+          <p class="empty-title">What would you like to know?</p>
+          <p class="small">Upload a document on the left, then ask about it. Try “Summarize this document”.</p>
+        </div>
+      </div>
+
+      <div class="composer">
+        <button id="mic-btn" class="icon-btn" title="Hold to talk: click to start, click again to stop">Mic</button>
+        <textarea id="input" rows="1" placeholder="Type a message…" aria-label="Message"></textarea>
+        <button id="send-btn" class="send-btn">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
